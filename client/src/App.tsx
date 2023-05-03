@@ -1,33 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
 
+import { auth } from './context/auth'
+
+import { getToken, clearToken } from './utils/authCookie'
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Restrict from './pages/Restrict'
+import DashBoard from './pages/DashBoard'
+import NotFound from './pages/NotFound'
+
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  useEffect(() => {
+    const token = getToken()
+
+    // clearToken()
+    if (typeof token === 'undefined') {
+      setIsAuthenticated(false)
+    }
+    else {
+      setIsAuthenticated(true)
+    }
+  }, [])
+
+  if (localStorage.getItem('token')) {
+    setIsAuthenticated(true)
+  }
+
+
+  if (!isAuthenticated) {
+    return (
+      <>
+        <auth.Provider value={[isAuthenticated, setIsAuthenticated]}>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='*' element={<Restrict />} />
+          </Routes>
+        </auth.Provider>
+      </>
+    )
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <auth.Provider value={[isAuthenticated, setIsAuthenticated]}>
+        <Routes>
+          <Route path='/' element={<DashBoard />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </auth.Provider>
     </>
   )
 }
