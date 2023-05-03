@@ -3,6 +3,9 @@ require('express-async-errors')
 const express = require('express')
 const app = express()
 
+const cors = require('cors')
+const helmet = require('helmet')
+
 const connectDB = require('./db/connect')
 
 const jobs = require('./routes/jobs')
@@ -13,6 +16,8 @@ const handleError = require('./middlewares/error-handler')
 
 //middlewares
 app.use(express.json())
+app.use(cors())
+app.use(helmet())
 
 // routes
 app.get('/', (req, res) => {
