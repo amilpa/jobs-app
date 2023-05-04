@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../components/Header'
 import LoginForm from '../components/LoginForm'
 
-const Home = () => {
+const Login = () => {
   return (
     <div>
       <Header />
@@ -11,4 +11,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Login

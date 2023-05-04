@@ -5,7 +5,8 @@ import { auth } from './context/auth'
 
 import { getToken, clearToken } from './utils/authCookie'
 import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
+import Login from './pages/Login'
+import Register from './pages/Register'
 import Restrict from './pages/Restrict'
 import DashBoard from './pages/DashBoard'
 import NotFound from './pages/NotFound'
@@ -36,7 +37,8 @@ function App() {
       <>
         <auth.Provider value={[isAuthenticated, setIsAuthenticated]}>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/Login' element={<Login />} />
+            <Route path='/Register' element={<Register />} />
             <Route path='*' element={<Restrict />} />
           </Routes>
         </auth.Provider>
