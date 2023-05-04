@@ -44,7 +44,7 @@ const LoginForm = () => {
     }
   }
 
-  const handleSubmit = (e: Event) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     checkInput()
     login()
@@ -68,12 +68,12 @@ const LoginForm = () => {
         <h1 className='text-center text-2xl font-semibold'>Enter credentials</h1>
         <div className='flex gap-2 flex-col w-[400px] my-2'>
           <label className='text-xl'>Email</label>
-          <input type="text" className='border-[1px] border-black rounded-s pl-2 py-2' value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="text" className='border-[1px] border-black rounded-s pl-2 py-2' value={email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
         </div>
         {emerror ? <span className='text-red-500'>Please enter valid email</span> : ''}
         <div className='flex gap-2 flex-col w-[400px] my-2'>
           <label className='text-xl'>Password</label>
-          <input type="password" className='border-[1px] border-black rounded-s pl-2 py-2' value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" className='border-[1px] border-black rounded-s pl-2 py-2' value={password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
         </div>
         {paserror ? <span className='text-red-500'>Please enter valid password</span> : ''}
         <FormButton handleSubmit={handleSubmit} />
