@@ -20,7 +20,7 @@ const handleError = (err, req, res, next) => {
   }
 
   // res.status(customError.statusCode).send(customError.msg)
-  res.status(customError.statusCode).send(customError.msg)
+  res.status(customError.statusCode).json({ message: customError.msg })
   // res.status(500).json(err)
 }
 
