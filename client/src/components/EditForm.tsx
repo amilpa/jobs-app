@@ -9,6 +9,7 @@ type Props = {
 const EditForm: FC<Props> = ({ isEdit }) => {
 
 
+
   return (
     <div className='w-[500px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-4'>
       <form className='flex flex-col mb-1'>
