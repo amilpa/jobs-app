@@ -4,10 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#1c60ff',
-        secondary: '#032f64',
-        teritiary: '#ffffff'
-
+        primary: '#5837f9',
+        secondary: '#000000',
+        teritiary: '#ffffff',
+        inputcolor: "#fcfbff",
+        bookmarkcolor: "#c6bee0"
       },
     },
   },
