@@ -3,6 +3,19 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  /* outline: 2px solid red; */
+}
+
 body{
-  background-color: #cccccc;
+  background-color: #fbfbff;
+}
+
+.text-shadow{
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-text-stroke: 0.5px white;
+}
+
+.text-shadow-bookmark{
+  -webkit-text-stroke: 0.01px white;
 }
