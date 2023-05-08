@@ -41,20 +41,20 @@ const AddForm = () => {
   const addJob = async () => {
     try {
       const token = getToken()
-      const job = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/jobs`, { company, position }, {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/jobs`, { company, position }, {
         headers: {
           Authorization: `Bearer ${token}`
         },
       })
       window.location.reload()
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
     }
   }
 
   return (
-    <div className='w-[500px] absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-lg shadow-lg'>
-      <h1 className='text-center text-2xl font-semibold'>New job</h1>
+    <div className='md:w-[500px] w-[250px] absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-lg shadow-lg'>
+      <h1 className='text-center text-xl md:text-2xl font-semibold mb-4 md:mb-2'>New job</h1>
       <form>
         <div className='flex flex-col gap-3 mb-3'>
           <label>Company</label>

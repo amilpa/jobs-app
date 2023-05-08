@@ -51,8 +51,8 @@ const Layout = () => {
   }, [setIsAuthenticated, token])
 
   return (
-    <div className='absolute w-full top-[80%]'>
-      <div className='grid grid-cols-3 place-items-center mb-8 gap-y-8'>
+    <div className='absolute w-full top-[70%] md:top-[80%]'>
+      <div className='grid grid-cols-1 md:grid-cols-3 place-items-center mb-8 gap-y-8'>
         {jobs.map((value: job) => {
           return (
             <Card key={value._id} Job={value} />

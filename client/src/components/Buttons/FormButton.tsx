@@ -8,7 +8,7 @@ interface Props {
 
 const FormButton: React.FC<Props> = ({ handleSubmit, text }) => {
   return (
-    < button type='submit' className='w-full text-xl bg-primary text-teritiary font-semibold py-1 rounded-s mt-3' onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleSubmit(e)} >{text}</button >
+    < button type='submit' className='w-full text-lg bg-primary text-teritiary font-semibold py-1 rounded-s mt-3' onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleSubmit(e)} >{text}</button >
   )
 }
 

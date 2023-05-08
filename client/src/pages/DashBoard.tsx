@@ -7,18 +7,20 @@ import Layout from '../components/Jobs/Layout'
 import EditForm from '../components/EditForm'
 
 import { edit } from '../context/updateJob'
+import { editJob } from '../context/updateJob'
 
 const DashBoard = () => {
 
-  const [isEdit, setIsEdit] = useState('sas')
+  const [isEdit, setIsEdit] = useState<editJob>({} as editJob)
+
 
   return (
     <div>
       <edit.Provider value={[isEdit, setIsEdit]}>
-        {isEdit ?
+        {isEdit._id ?
           <div>
             <Header />
-            <EditForm />
+            <EditForm editJob={isEdit} />
           </div>
           :
           <div>

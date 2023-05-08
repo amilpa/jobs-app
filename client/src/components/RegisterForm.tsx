@@ -84,21 +84,21 @@ const RegisterForm = () => {
   return (
     <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-lg bg-teritiary py-5 px-3 rounded-lg'>
       <form>
-        <Link to='/login'><AiOutlineBackward className='absolute top-7 text-xl text-gray-500' /></Link>
+        <Link to='/login' className='absolute top-7 '><AiOutlineBackward className='text-xl text-gray-500' /></Link>
         <h1 className='text-center text-2xl font-semibold'>Enter details</h1>
-        <div className='flex gap-2 flex-col w-[400px] my-2'>
-          <label className='text-xl'>Name</label>
-          <input type="text" value={name} className='border-[1px] border-black rounded-s pl-2 py-2' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} />
+        <div className='flex gap-2 flex-col md:w-[400px] w-[250px] my-2'>
+          <label className='text-lg'>Name</label>
+          <input type="text" value={name} className='border-[1px] border-black rounded-s pl-2 py-1' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} />
         </div>
         {nameErr ? <Error text='Please enter a valid name' /> : ''}
-        <div className='flex gap-2 flex-col w-[400px] my-2'>
-          <label className='text-xl'>Email</label>
-          <input type="text" value={email} className='border-[1px] border-black rounded-s pl-2 py-2' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
+        <div className='flex gap-2 flex-col md:w-[400px] w-[250px] my-2'>
+          <label className='text-lg'>Email</label>
+          <input type="text" value={email} className='border-[1px] border-black rounded-s pl-2 py-1' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
         </div>
         {emError ? <Error text='Please enter a valid email' /> : ''}
-        <div className='flex gap-2 flex-col w-[400px] my-2'>
-          <label className='text-xl'>Password</label>
-          <input type="password" value={password} className='border-[1px] border-black rounded-s pl-2 py-2' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
+        <div className='flex gap-2 flex-col md:w-[400px] w-[250px] my-2'>
+          <label className='text-lg'>Password</label>
+          <input type="password" value={password} className='border-[1px] border-black rounded-s pl-2 py-1' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
         </div>
         {passErr ? <Error text='Please enter a valid password' /> : ''}
       </form>

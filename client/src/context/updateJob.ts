@@ -1,5 +1,11 @@
 
 import { createContext, type Dispatch, type SetStateAction } from "react";
-import { job } from "../components/Jobs/Layout";
 
-export const edit = createContext<[string, Dispatch<SetStateAction<string>>]>(['No one cares', () => { console.log('Hello world') }])
+export type editJob = {
+  _id: string
+  company: string,
+  position: string,
+  status: string
+}
+
+export const edit = createContext<[editJob, Dispatch<SetStateAction<editJob>>]>([<editJob>{}, () => { console.log('Hello world') }])
