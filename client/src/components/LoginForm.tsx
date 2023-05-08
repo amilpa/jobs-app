@@ -7,6 +7,9 @@ import axios from 'axios'
 import { auth } from '../context/auth'
 import { createToken } from '../utils/authCookie'
 import FormButton from './Buttons/FormButton'
+import Error from './Error'
+import ErrorCenter from './ErrorCenter'
+import { Link, useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
 
@@ -17,6 +20,12 @@ const LoginForm = () => {
 
   const [emerror, setEmerror] = useState(false)
   const [paserror, setPaserror] = useState(false)
+
+  const [notExist, setNotExist] = useState(false)
+
+  const [badRequest, setBadRequest] = useState('')
+
+  const navigate = useNavigate()
 
 
   const checkInput = () => {
@@ -44,21 +53,26 @@ const LoginForm = () => {
     }
   }
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     checkInput()
-    login()
+    if (!emerror && !paserror) {
+      login()
+    }
   }
 
   const login = async () => {
-    const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/login`, {
-      email: email,
-      password: password
-    })
-    if (res.status === 200) {
+    try {
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/login`, {
+        email: email,
+        password: password
+      })
       const token = res.data.token
       createToken(token)
       setIsAuthenticated(true)
+      navigate('/', { replace: true })
+    } catch (error: unknown) {
+      setBadRequest(error.response.data.message)
     }
   }
 
@@ -70,14 +84,16 @@ const LoginForm = () => {
           <label className='text-xl'>Email</label>
           <input type="text" className='border-[1px] border-black rounded-s pl-2 py-2' value={email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
         </div>
-        {emerror ? <span className='text-red-500'>Please enter valid email</span> : ''}
+        {emerror ? <Error text='Please enter valid email' /> : ''}
         <div className='flex gap-2 flex-col w-[400px] my-2'>
           <label className='text-xl'>Password</label>
           <input type="password" className='border-[1px] border-black rounded-s pl-2 py-2' value={password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
         </div>
-        {paserror ? <span className='text-red-500'>Please enter valid password</span> : ''}
-        <FormButton handleSubmit={handleSubmit} />
+        {paserror ? <Error text='Please enter valid password' /> : ''}
+        <FormButton handleSubmit={handleSubmit} text='Login' />
       </form>
+      {badRequest ? <ErrorCenter text={badRequest} /> : ''}
+      <p className='text-center text-md mt-3'>If you haven't registered,<Link to='/register' className='text-primary underline'>click here</Link></p>
     </div>
   )
 }
