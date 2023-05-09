@@ -17,6 +17,7 @@ const LoginForm = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [second, setsecond] = useState(second)
 
   const [emerror, setEmerror] = useState(false)
   const [paserror, setPaserror] = useState(false)

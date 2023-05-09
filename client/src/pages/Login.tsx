@@ -1,6 +1,6 @@
-import React from 'react'
-import Header from '../components/Header'
-import LoginForm from '../components/LoginForm'
+import React from "react";
+import Header from "../components/Header";
+import LoginForm from "../components/LoginForm";
 
 const Login = () => {
   return (
@@ -8,7 +8,7 @@ const Login = () => {
       <Header />
       <LoginForm />
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
