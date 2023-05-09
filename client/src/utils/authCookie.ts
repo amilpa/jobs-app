@@ -1,17 +1,17 @@
 import Cookies from "js-cookie";
 
 const getToken = () => {
-  return Cookies.get(import.meta.env.VITE_COOKIE_NAME_AUTH);
+  return Cookies.get("token");
 };
 
 const createToken = (token: string) => {
-  return Cookies.set(import.meta.env.VITE_COOKIE_NAME_AUTH, token, {
+  return Cookies.set("token", token, {
     sameSite: "strict",
   });
 };
 
 const clearToken = () => {
-  return Cookies.remove(import.meta.env.VITE_COOKIE_NAME_AUTH);
+  return Cookies.remove("token");
 };
 
 export { getToken, createToken, clearToken };
