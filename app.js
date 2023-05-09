@@ -12,6 +12,7 @@ const connectDB = require('./db/connect')
 
 const jobs = require('./routes/jobs')
 const auth = require('./routes/auth')
+const frontend = require('./routes/frontend')
 
 const notFound = require('./middlewares/not-found')
 const handleError = require('./middlewares/error-handler')
@@ -24,14 +25,19 @@ const handleError = require('./middlewares/error-handler')
 //middlewares
 app.use(express.json())
 app.use(cors())
-// app.use(helmet())
+// app.use(helmet({
+//   contentSecurityPolicy: {
+//     directives: {
+//       "script-src": ["'self'"]
+//     },
+//   },
+// }))
+app.use(helmet())
 // app.use(log)
 app.use(express.static(path.resolve(__dirname, './client/dist')))
 
 // routes
-app.get('/', (req, res) => {
-  res.send('<h1>Jobs api</h1><a href="/api/v1/jobs">Main route</a>')
-})
+app.use('/', frontend)
 
 app.use('/api/v1/jobs', jobs)
 app.use('/api/v1/auth', auth)
