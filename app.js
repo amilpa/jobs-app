@@ -32,7 +32,7 @@ app.use(cors())
 //     },
 //   },
 // }))
-app.use(helmet())
+// app.use(helmet())
 // app.use(log)
 app.use(express.static(path.resolve(__dirname, './client/dist')))
 
