@@ -41,7 +41,7 @@ const AddForm = () => {
   const addJob = async () => {
     try {
       const token = getToken()
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/jobs`, { company, position }, {
+      await axios.post(`/api/v1/jobs`, { company, position }, {
         headers: {
           Authorization: `Bearer ${token}`
         },

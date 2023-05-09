@@ -57,7 +57,7 @@ const LoginForm = () => {
   const login = async () => {
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/login`,
+        `/api/v1/auth/login`,
         {
           email: email,
           password: password,

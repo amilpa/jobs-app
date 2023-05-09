@@ -20,8 +20,7 @@ const Card: FC<Props> = (props) => {
 
   const deleteRecord = async () => {
     try {
-      console.log(`${import.meta.env.VITE_BACKEND_URL}/api/v1/jobs/${props.Job._id}`)
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/v1/jobs/${props.Job._id}`, {
+      await axios.delete(`/api/v1/jobs/${props.Job._id}`, {
         headers: {
           Authorization: `Bearer ${getToken()}`
         }

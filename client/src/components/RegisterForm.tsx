@@ -71,7 +71,7 @@ const RegisterForm = () => {
 
   const register = async () => {
     try {
-      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/register`, { name: name, email: email, password: password })
+      const res = await axios.post(`/api/v1/auth/register`, { name: name, email: email, password: password })
       const token = res.data.token
       createToken(token)
       setIsAuthenticated(true)

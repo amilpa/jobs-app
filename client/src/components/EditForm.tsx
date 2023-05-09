@@ -50,7 +50,7 @@ const EditForm: FC<Props> = ({ editJob }) => {
 
   const updateJob = async () => {
     try {
-      await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/jobs/${editJob._id}`, { company, position, status }, {
+      await axios.patch(`/api/v1/jobs/${editJob._id}`, { company, position, status }, {
         headers: {
           Authorization: `Bearer ${getToken()}`
         }

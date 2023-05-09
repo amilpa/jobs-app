@@ -31,7 +31,7 @@ const Layout = () => {
 
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/jobs`, {
+    axios.get(`/api/v1/jobs`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
